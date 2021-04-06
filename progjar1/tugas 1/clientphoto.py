@@ -29,6 +29,8 @@ for i in portz:
             while amount_received < (amount_expected + 12):
                 data = sock.recv(16)
                 amount_received += len(data)
+                if not data:
+                    break
                 response.write(data)
     finally:
         print("closing")
