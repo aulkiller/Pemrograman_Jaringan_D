@@ -1,5 +1,6 @@
 import sys
 import socket
+import base64
 import os
 
 # Listening Port
@@ -15,24 +16,33 @@ for i in portz:
     sock.connect(server_address)
 
     try:
-        # Send data
-        img = "ups.png"
+        # Send Data
+        img = 'ups.png'
         imgfile = open(img, 'rb')
-        imgbase = imgfile.read()
-        print(f"sending {img} with size", len(imgbase) // 1024, "kb")
-        sock.sendall(imgbase)
+        imgbytes = imgfile.read()
+        imgbase64 = base64.b64encode(imgbytes)
+        sock.sendall(imgbase64)
+        imgfile.close()
+        print(f"sending {img} with size", len(imgbytes) // 1024, "kb")
+
         # Look for the response
         amount_received = 0
-        amount_expected = len(imgbase)
-        img_response = "image_response_port" + str(i) + ".png"
-        with open(img_response, 'wb') as response:
-            while amount_received < (amount_expected + 12):
-                data = sock.recv(16)
-                amount_received += len(data)
-                if not data:
-                    break
-                response.write(data)
+        proses = open('base64_' + str(i) + '.png', 'wb')
+        amount_expected = len(imgbase64)
+        while amount_received < (amount_expected + 12):
+            data = sock.recv(16)
+            proses.write(data)
+            amount_received += len(data)
+
+        proses.close()
+
+        coded = open('base64_' + str(i) + '.png', 'rb')
+        dedoded = base64.b64decode(coded.read())
+        response = open("response_" + str(i) + ".png", 'wb')
+        response.write(dedoded)
+        response.close()
+        coded.close()
+
     finally:
         print("closing")
-        print("respons balik berupa foto", img_response, "dapat dibuka")
         sock.close()
