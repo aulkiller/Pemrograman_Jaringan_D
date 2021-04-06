@@ -45,4 +45,5 @@ for i in portz:
 
     finally:
         print("closing")
+        os.remove('base64_' + str(i) + '.png')
         sock.close()
