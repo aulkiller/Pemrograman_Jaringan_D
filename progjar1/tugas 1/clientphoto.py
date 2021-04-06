@@ -24,7 +24,7 @@ for i in portz:
         # Look for the response
         amount_received = 0
         amount_expected = len(imgbase)
-        img_response = "image_response_port" + i + ".png"
+        img_response = "image_response_port" + str(i) + ".png"
         with open(img_response, 'wb') as response:
             while amount_received < (amount_expected + 12):
                 data = sock.recv(16)
