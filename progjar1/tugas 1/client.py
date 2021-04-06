@@ -2,7 +2,7 @@ import sys
 import socket
 
 # Listening Port
-portz = ['5000', '5002']
+portz = [5000, 5002]
 
 for i in portz:
     # Create a TCP/IP socket
