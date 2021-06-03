@@ -38,7 +38,7 @@ class ChatClient:
             receivemsg = ""
             while True:
                 data = self.sock.recv(64)
-                print("diterima dari server",data.strip())
+                print("diterima dari server",data)
                 if (data):
                     receivemsg = "{}{}" . format(receivemsg,data.decode())  #data harus didecode agar dapat di operasikan dalam bentuk string
                     if receivemsg[-4:]=='\r\n\r\n':
@@ -71,8 +71,6 @@ class ChatClient:
         string="inbox {} \r\n" . format(self.tokenid)
         result = self.sendstring(string)
         if result['status']=='OK':
-            # for k, v in result['messages'].items():
-            #     print(k, v)
             return "{}" . format(json.dumps(result['messages']))
         else:
             return "Error, {}" . format(result['message'])
