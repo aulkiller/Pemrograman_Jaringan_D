@@ -1,7 +1,8 @@
 import socket
 
 
-SERVER_IP = "192.168.161.128"
+SERVER_IP = "192.168.122,122"
+# ip alpine1
 SERVER_PORT = 5005
 
 

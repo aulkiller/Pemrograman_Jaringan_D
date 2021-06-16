@@ -1,7 +1,8 @@
 import socket
 import time
 
-TARGET_IP = "192.168.161.128"
+TARGET_IP = "192.168.122.122"
+# ip alpine1
 TARGET_PORT = 5005
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
