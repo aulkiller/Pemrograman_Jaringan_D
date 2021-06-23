@@ -8,8 +8,8 @@ import datetime
 def get_targets():
     targets = dict()
     targets[
-        'rec1'] = '192.168.122.132'
-    targets['rec2'] = '192.168.122.195'
+        'rec1'] = '192.168.122.120'
+    targets['rec2'] = '192.168.122.145'
     targets['rec3'] = '192.168.122.97'
     targets['rec4'] = '192.168.122.113'
     return targets
