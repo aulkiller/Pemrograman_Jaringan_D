@@ -1,4 +1,4 @@
-from library import download_gambar,get_url_list
+from library import get_targets,send_file
 import time
 import datetime
 import concurrent.futures
@@ -6,20 +6,20 @@ import concurrent.futures
 
 
 
-def download_semua():
+def send_semua():
     texec = dict()
-    urls = get_url_list()
+    targets = get_targets()
     status_task = dict()
     task = concurrent.futures.ThreadPoolExecutor(max_workers=4)
     catat_awal = datetime.datetime.now()
-    for k in urls:
-        print(f"mendownload {urls[k]}")
-        waktu = time.time()
+    for k in targets:
+        print(f"mengirim ke {k} di {targets[k]}")
+        # waktu = time.time()
         #bagian ini merupakan bagian yang mengistruksikan eksekusi fungsi download gambar secara multithread
-        texec[k] = task.submit(download_gambar, urls[k])
+        texec[k] = task.submit(send_file, targets[k])
 
     #setelah menyelesaikan tugasnya, dikembalikan ke main thread dengan memanggil result
-    for k in urls:
+    for k in targets:
         status_task[k]=texec[k].result()
 
     catat_akhir = datetime.datetime.now()
@@ -32,4 +32,4 @@ def download_semua():
 #fungsi download_gambar akan dijalankan secara multithreading
 
 if __name__=='__main__':
-    download_semua()
+    send_semua()

@@ -1,20 +1,20 @@
-from library import download_gambar, get_url_list
+from library import get_targets,send_file
 import time
 import datetime
 from multiprocessing import Process
 
 def download_semua():
     texec = dict()
-    urls = get_url_list()
+    targets = get_targets()
     catat_awal = datetime.datetime.now()
-    for k in urls:
-        print(f"mendownload {urls[k]}")
-        waktu = time.time()
+    for k in targets:
+        print(f"mengirim ke {k} di {targets[k]}")
+        # waktu = time.time()
         #bagian ini merupakan bagian yang mengistruksikan eksekusi fungsi download gambar secara multiprocess
-        texec[k] = Process(target=download_gambar, args=(urls[k],))
+        texec[k] = Process(target=send_file, args=(targets[k],))
         texec[k].start()
     #setelah menyelesaikan tugasnya, dikembalikan ke main process dengan join
-    for k in urls:
+    for k in targets:
         texec[k].join()
     catat_akhir = datetime.datetime.now()
     selesai = catat_akhir - catat_awal
