@@ -1,8 +1,5 @@
-import logging
-import requests
+import socket
 import os
-import time
-import datetime
 
 
 def get_targets():

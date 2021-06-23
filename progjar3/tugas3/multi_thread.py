@@ -1,4 +1,4 @@
-from library import download_gambar,get_url_list
+from library import get_targets,send_file
 import time
 import datetime
 import threading
@@ -6,20 +6,20 @@ import threading
 
 
 
-def download_semua():
+def send_semua():
     texec = dict()
-    urls = get_url_list()
+    targets = get_targets()
 
     catat_awal = datetime.datetime.now()
-    for k in urls:
-        print(f"mendownload {urls[k]}")
+    for k,v in targets:
+        print(f"mengirim ke {targets[k]} di {targets[v]}")
         waktu = time.time()
-        #bagian ini merupakan bagian yang mengistruksikan eksekusi fungsi download gambar secara multithread
-        texec[k] = threading.Thread(target=download_gambar, args=(urls[k],))
+        #bagian ini merupakan bagian yang mengistruksikan eksekusi fungsi send gambar secara multithread
+        texec[k] = threading.Thread(target=send_file, args=(targets[v],))
         texec[k].start()
 
     #setelah menyelesaikan tugasnya, dikembalikan ke main thread dengan join
-    for k in urls:
+    for k in targets:
         texec[k].join()
 
     catat_akhir = datetime.datetime.now()
@@ -30,4 +30,4 @@ def download_semua():
 #fungsi download_gambar akan dijalankan secara multithreading
 
 if __name__=='__main__':
-    download_semua()
+    send_semua()
