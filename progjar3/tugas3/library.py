@@ -19,10 +19,10 @@ def send_file(ip):
     waktu_awal = datetime.datetime.now()
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-    namafile = "bart.png"
+    namafile = "progjar3.txt"
     ukuran = os.stat(namafile).st_size
 
-    fp = open('bart.png', 'rb')
+    fp = open('progjar3.txt', 'rb')
     k = fp.read()
     terkirim = 0
     for x in k:
@@ -32,4 +32,4 @@ def send_file(ip):
         # print(k_bytes, f"terkirim {terkirim} of {ukuran} ")
     waktu_process = datetime.datetime.now() - waktu_awal
     waktu_akhir = datetime.datetime.now()
-    logging.warning(f"writing bart.png dalam waktu {waktu_process} {waktu_awal} s/d {waktu_akhir}")
+    logging.warning(f"writing {namafile} dalam waktu {waktu_process} {waktu_awal} s/d {waktu_akhir}")
