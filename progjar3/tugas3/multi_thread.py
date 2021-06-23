@@ -13,7 +13,7 @@ def send_semua():
     catat_awal = datetime.datetime.now()
     for k in targets:
         print(f"mengirim ke {k} di {targets[k]}")
-        waktu = time.time()
+        # waktu = time.time()
         #bagian ini merupakan bagian yang mengistruksikan eksekusi fungsi send gambar secara multithread
         texec[k] = threading.Thread(target=send_file, args=(targets[k],))
         texec[k].start()

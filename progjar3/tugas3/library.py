@@ -29,7 +29,7 @@ def send_file(ip):
         k_bytes = bytes([x])
         sock.sendto(k_bytes, (ip, 5005))
         terkirim = terkirim + 1
-        # print(k_bytes, f"terkirim {terkirim} of {ukuran} ")
+        print(k_bytes, f"terkirim {terkirim} of {ukuran} ")
     waktu_process = datetime.datetime.now() - waktu_awal
     waktu_akhir = datetime.datetime.now()
     logging.warning(f"writing {namafile} dalam waktu {waktu_process} {waktu_awal} s/d {waktu_akhir}")
