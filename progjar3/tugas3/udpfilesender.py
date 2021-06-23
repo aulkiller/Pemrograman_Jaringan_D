@@ -5,10 +5,10 @@ import os
 def get_targets():
     targets = dict()
     targets[
-        'rec1'] = 'ip1'
-    targets['rec2'] = 'ip2'
-    targets['rec3'] = 'ip3'
-    targets['rec4'] = 'ip4'
+        'rec1'] = '192.168.122.132'
+    targets['rec2'] = '192.168.122.195'
+    targets['rec3'] = '192.168.122.97'
+    targets['rec4'] = '192.168.122.113'
     return targets
 
 
