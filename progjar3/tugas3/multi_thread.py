@@ -11,11 +11,11 @@ def send_semua():
     targets = get_targets()
 
     catat_awal = datetime.datetime.now()
-    for k,v in targets:
-        print(f"mengirim ke {targets[k]} di {targets[v]}")
+    for k in targets:
+        print(f"mengirim ke {k} di {targets[k]}")
         waktu = time.time()
         #bagian ini merupakan bagian yang mengistruksikan eksekusi fungsi send gambar secara multithread
-        texec[k] = threading.Thread(target=send_file, args=(targets[v],))
+        texec[k] = threading.Thread(target=send_file, args=(targets[k],))
         texec[k].start()
 
     #setelah menyelesaikan tugasnya, dikembalikan ke main thread dengan join
