@@ -19,10 +19,10 @@ def send_file(ip):
     waktu_awal = datetime.datetime.now()
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
-    namafile = "progjar3.txt"
+    namafile = "bart.png"
     ukuran = os.stat(namafile).st_size
 
-    fp = open('progjar3.txt', 'rb')
+    fp = open('bart.png', 'rb')
     k = fp.read()
     terkirim = 0
     for x in k:
